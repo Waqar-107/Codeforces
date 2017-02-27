@@ -28,7 +28,7 @@ bool cmp(pp a ,pp b)
 
 int main()
 {
-    freopen("in.txt","r",stdin);
+    //freopen("in.txt","r",stdin);
     ll i,j,k;
     ll n,s=0;
 
