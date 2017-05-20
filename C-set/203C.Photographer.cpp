@@ -1,5 +1,5 @@
 /*****from dust i have come, dust i will be*****/
-//473C
+
 #include<bits/stdc++.h>
 
 typedef long long int ll;
@@ -16,32 +16,6 @@ typedef long long int ll;
 #define min3(a,b,c) min2(min2(a,b),c)
 
 using namespace std;
-
-struct node
-{
-    ll value;
-    vector<ll> con;
-
-    node() {}
-    node(ll x)
-    {
-        value=x;
-    }
-};
-
-bool cmp(node a, node b)
-{
-    if(a.con.size()<b.con.size())
-        return true;
-
-    else if(a.con.size()==b.con.size())
-    {
-        return a.value>b.value;
-    }
-
-    else
-        return false;
-}
 
 int main()
 {
