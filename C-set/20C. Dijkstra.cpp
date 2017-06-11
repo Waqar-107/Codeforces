@@ -133,13 +133,5 @@ int main()
         for(i=x-1;i>=0;i--)
             cout<<rasta[i]<<" ";
 
-    /*map<ll,ll>::iterator p=path.begin();
-    while(p!=path.end())
-    {
-        cout<<p->first<<"  "<<p->second<<endl;
-        p++;
-    }*/
-
-
         return 0;
 }
