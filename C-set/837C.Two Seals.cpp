@@ -37,6 +37,12 @@ int main()
             v.push_back({x,y});
         }
     }
+    
+    if(v.size()==0)
+    {
+        cout<<"0";
+        return 0;
+    }
 
     m=0;
     for(i=0;i<v.size()-1;i++)
