@@ -114,13 +114,6 @@ int main()
         ocean(i,0);
    }
 
-   /*for(i=0;i<n;i++)
-   {
-       for(j=0;j<m;j++)
-        cout<<vis[i][j]<<" ";
-       nl
-   }*/
-
     //detect lakes
     for(i=0;i<n;i++)
     {
@@ -135,8 +128,6 @@ int main()
     }
 
     sort(v.begin(),v.end(),cmp);
-    /*for(i=0;i<v.size();i++)
-        cout<<v[i].c<<endl;*/
 
     memset(vis,0,sizeof(vis));
     for(i=0;i<v.size()-k;i++)
