@@ -89,9 +89,6 @@ public:
 	void print()
 	{
 		printf("%d\n", ans[1]);
-
-
-		
 	}
 };
 
