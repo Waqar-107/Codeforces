@@ -1,58 +1,76 @@
-#include<bits/stdc++.h>
-using namespace std;
+#define _CRT_SECURE_NO_WARNINGS
+
+/***from dust i have come, dust i will be***/
+
+#include<algorithm>
+#include<cmath>
+#include<cstdio>
+#include<cstdlib>
+#include<cstring>
+#include<functional>
+#include<iomanip>
+#include<iostream>
+#include<map>
+#include<numeric>
+#include<queue>
+#include<set>
+#include<stack>
+#include<sstream>
+#include<string>
+#include<time.h>
+#include<utility>
+#include<vector>
+
+typedef long long int ll;
+typedef unsigned long long int ull;
+
+#define dbg printf("in\n");
+#define nl printf("\n");
+#define N 100
+#define inf 100000
 #define pp pair<char,char>
+
+using namespace std;
+
 int main()
 {
-    int i,j,k;
-    vector<pp> v;
-    string s,t;
-    map<char,char> mp;
+    freopen("in.txt", "r", stdin);
 
-    //initially they are assigned 1 that means everything is in right place
-    for(i='a';i<='z';i++)
-        mp[i]='1';
+    int i, j, k;
+    int n,m,x;
+    string s,t;
 
     cin>>s>>t;
 
-    for(i=0;i<s.length();i++)
+    vector<pp> v;
+    char mp[26];
+    bool vis[26];
+
+    memset(vis,0,sizeof(vis));
+
+    n=s.length();
+    for(i=0;i<n;i++)
     {
-        //if they are equal then the letter is in its place and you need to update it for the case, 1.ws 2.ww
         if(s[i]==t[i])
         {
-            if(mp[s[i]]=='1' && mp[t[i]]=='1')
-            {
-                mp[s[i]]=t[i];
-                mp[t[i]]=s[i];
-            }
+            if(vis[s[i]-'a'] && mp[s[i]-'a']==s[i])
+                continue;
 
-            else
-            {
-                if(mp[s[i]]==t[i] && mp[t[i]]==s[i])
-                    continue;
+            else if(!vis[s[i]-'a'])
+                mp[s[i]-'a']=s[i],vis[s[i]-'a']=1;
 
-                else
-                {
-                    cout<<"-1";
-                    return 0;
-                }
+            else if(vis[s[i]-'a'] && mp[s[i]-'a']!=s[i])
+            {
+                cout<<"-1";
+                return 0;
             }
         }
 
         else
         {
-            //if they are replaced then update the map and make a new pair and push it in the vector
-            if(mp[s[i]]=='1' && mp[t[i]]=='1')
+            if(vis[s[i]-'a'] && vis[t[i]-'a'])
             {
-                mp[s[i]]=t[i];
-                mp[t[i]]=s[i];
-                v.push_back(make_pair(s[i],t[i]));
-            }
-
-
-            //if the map has already been manipulated then check if the elements are complementary to each other
-            else
-            {
-                if(mp[s[i]]==t[i] && mp[t[i]]==s[i])
+                if(mp[s[i]-'a']==t[i] && mp[t[i]-'a']==s[i])
                     continue;
 
                 else
@@ -62,15 +80,25 @@ int main()
                 }
             }
 
+            else if(!vis[s[i]-'a'] && !vis[t[i]-'a'])
+            {
+                mp[s[i]-'a']=t[i];vis[s[i]-'a']=1;
+                mp[t[i]-'a']=s[i];vis[t[i]-'a']=1;
+
+                v.push_back({s[i],t[i]});
+            }
+
+            else
+            {
+                cout<<"-1";
+                return 0;
+            }
         }
     }
 
     cout<<v.size()<<endl;
     for(i=0;i<v.size();i++)
-    {
         cout<<v[i].first<<" "<<v[i].second<<endl;
-    }
 
     return 0;
-
 }
