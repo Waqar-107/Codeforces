@@ -261,17 +261,6 @@ public:
 };
 //------------------------------------------------------------------
 
-struct node
-{
-	int u; ll cost;
-	node() {}
-	node(int u, ll cost)
-	{
-		this->u = u;
-		this->cost = cost;
-	}
-};
-
 struct edge
 {
 	int v; ll w;
@@ -319,7 +308,7 @@ void dijkstra(int n)
 
 int main()
 {
-	freopen("in2.txt", "r", stdin);
+	//freopen("in2.txt", "r", stdin);
 
 	int i, j, k;
 	int n, m, p;
