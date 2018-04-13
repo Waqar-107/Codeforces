@@ -6,7 +6,13 @@ a=[0]*n
 for i in range(n):
     a[i]=int(input())
 
-avg=sum(a)//n
+avg=sum(a)
+
+if avg%n!=0:
+    print('Unrecoverable configuration.')
+    exit(0)
+
+avg=avg//n
 
 x=[]
 for i in range(n):
