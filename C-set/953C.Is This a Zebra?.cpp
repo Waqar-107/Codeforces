@@ -15,73 +15,86 @@
 #include<queue>
 #include<set>
 #include<stack>
-#include<sstream>
 #include<string>
-#include<time.h>
 #include<utility>
 #include<vector>
 
 typedef long long int ll;
 typedef unsigned long long int ull;
 
-#define dbg printf("in\n");
+#define dbg printf("in\n")
 #define nl printf("\n");
-#define N 510
-#define inf 1000000
+#define N 200010
+#define inf 100000000000
+#define pp pair<int,int>
 
 using namespace std;
 
-
 int main()
 {
-    freopen("in.txt", "r", stdin);
+	//freopen("in2.txt", "r", stdin);
 
-    int i, j, k;
-    int n, m, cnt;
+	int i, j, k;
+	int n, m, t;
+	int x, y;
+	
+	cin >> n;
 
-    scanf("%d",&n);
+	set<int> zero;
+	set<int> one;
 
-    int a[n];
-    for(i=0;i<n;i++)
-        scanf("%d",&a[i]);
+	int *a = new int[n];
+	for (i = 0; i < n; i++)
+		cin >> a[i];
 
-    int st=0,en=1;
-    if(a[0])
-        swap(st,en);
+	int cnt = 1, st = a[0];
+	for (i = 1; i < n; i++)
+	{
+		if (a[i] == st)
+			cnt++;
 
-    i=0;cnt=0;
-    while(a[i]!=en && i<n)
-    {
-        cnt++;i++;
-    }
+		else
+		{
+			if (st)
+				one.insert(cnt);
+			else
+				zero.insert(cnt);
 
-    stack<int> ss;
-    for(i=0;i<n;i++)
-    {
-        if(a[i]==st)
-            ss.push(st);
+			st = 1 - st;
+			cnt = 1;
+		}
 
-        else
-        {
-            if(ss.size())
-                ss.pop();
+		if (i == n - 1)
+		{
+			if (st)
+				one.insert(cnt);
+			else
+				zero.insert(cnt);
+		}
+	}
 
-            else
-            {
-                printf("NO\n");
-                return 0;
-            }
-        }
-    }
+	if (one.size() <= 1 && zero.size() <= 1)
+	{
+		if (one.size() == 0 || zero.size() == 0)
+			cout << "YES" << endl;
 
-    if(ss.size()>0 && ss.size()==cnt)
-        printf("YES\n");
-    
-    else if(ss.size()==0)
-        printf("YES\n");
-    
-    else
-        printf("NO\n");
+		else
+		{
+			auto itr = one.begin();
 
-    return 0;
+			x = *itr;
+			itr = zero.begin();
+			y = *itr;
+
+			if (x == y)
+				cout << "YES" << endl;
+			else
+				cout << "NO" << endl;
+		}
+	}
+
+	else
+		cout << "NO" << endl;
+
+	return 0;
 }
