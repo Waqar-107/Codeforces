@@ -64,7 +64,7 @@ int main()
     {
         sff(u,k);
 
-        if(fin[u]-start[u]+1<k)
+        if(fin[u]-start[u]<k)
             pf(-1);
         else
             pf(mp[start[u]+k-1]);
