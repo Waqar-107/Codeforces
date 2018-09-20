@@ -7,19 +7,6 @@ typedef unsigned long long int ull;
 
 #define dbg printf("in\n")
 #define nl printf("\n");
-#define N 30100
-#define inf 1000000000
-
-#define sf(n) scanf("%d", &n)
-#define sff(n,m) scanf("%d%d",&n,&m)
-#define sfl(n) scanf("%I64d", &n)
-#define sffl(n,m) scanf("%I64d%I64d",&n,&m)
-
-#define pf(n) printf("%d ",n)
-#define pff(n,m) printf("%d %d\n",n,m)
-#define pffl(n,m) printf("%I64d %I64d\n",n,m)
-#define pfl(n) printf("%I64d\n",n)
-#define pfs(s) printf("%s",s)
 
 #define pb push_back
 #define pp pair<int,int>
@@ -42,12 +29,17 @@ int solve(vector<pp> v,int price)
         amx[i]=max(amx[i-1],b[i]);
 
     int ans=0;
-    for(int i=0;i<v.size();i++)
+    for(int i=1;i<v.size();i++)
     {
+        //from beginning till ith, we search and select an id other than i
+        //id will have something greater than price-p[i] so we decrement it by 1
         int id=upper_bound(p.begin(),p.begin()+i,price-p[i])-p.begin();
+
+        //if price-p[i] is greater than p[i]
+        if(id>=i+1) continue;
         id--;
 
-        if(id<0 || id>=v.size()) continue;
+        if(id<0) continue;
 
         if(id!=i)
             ans=max(ans,b[i]+amx[id]);
