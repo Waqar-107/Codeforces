@@ -43,27 +43,6 @@ typedef unsigned long long int ull;
 
 using namespace std;
 
-string t;
-int a[27];
-void solve()
-{
-	int n = t.length(), m = n / 2;
-	memset(a, 0, sizeof(a));
-
-	for (int i = 0; i < n; i++)
-		a[t[i] - 'a']++;
-
-	for (int i = 0; i < 26; i++)
-	{
-		if (a[i] > m)
-			return;
-	}
-
-	pfs("YES\n");
-	cout << t << endl;
-	exit(0);
-}
-
 int main()
 {
 	//freopen("in2.txt", "r", stdin);
