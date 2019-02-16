@@ -1,0 +1,11 @@
+# from dust i have come, dust i will be
+
+t = int(input())
+while t:
+    t -= 1
+    n = int(input())
+
+    if n % 2:
+        print((n - 3) // 2 + 1)
+    else:
+        print(n // 2)
