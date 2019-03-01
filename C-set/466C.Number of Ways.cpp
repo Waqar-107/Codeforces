@@ -1,76 +1,89 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 /***from dust i have come, dust i will be***/
 
-#include<algorithm>
-#include<cmath>
-#include<cstdio>
-#include<cstdlib>
-#include<cstring>
-#include<functional>
-#include<iomanip>
-#include<iostream>
-#include<map>
-#include<numeric>
-#include<queue>
-#include<set>
-#include<stack>
-#include<sstream>
-#include<string>
-#include<time.h>
-#include<unordered_map>
-#include<unordered_set>
-#include<utility>
-#include<vector>
+#include<bits/stdc++.h>
 
 typedef long long int ll;
 typedef unsigned long long int ull;
 
-#define dbg printf("in\n");
-#define nl printf("\n");
-#define N 100010
-#define inf 10000000
+#define dbg printf("in\n")
+#define nl printf("\n")
+#define N 4
+#define inf 1e6
+
+#define sf(n) scanf("%d", &n)
+#define sff(n,m) scanf("%d%d",&n,&m)
+#define sfl(n) scanf("%I64d", &n)
+#define sffl(n,m) scanf("%I64d%I64d",&n,&m)
+
+#define pf(n) printf("%d",n)
+#define pff(n,m) printf("%d %d",n,m)
+#define pffl(n,m) printf("%I64d %I64d",n,m)
+#define pfl(n) printf("%I64d",n)
+#define pfs(s) printf("%s",s)
+
+#define pb push_back
 #define pp pair<int,int>
 
 using namespace std;
 
-ll a[N * 5];
 int main()
 {
-	//freopen("in2.txt", "r", stdin);
+    freopen("in.txt", "r", stdin);
 
-	int i, j, k;
-	int n, m;
+    int i, j, k;
+    int n, m;
+    int x, y;
 
-	ll s = 0;
+    ll sum = 0, tmp;
 
-	cin >> n;
-	for (i = 0; i < n; i++)
-		cin >> a[i], s += a[i];
+    sf(n);
 
-	if (s % 3 || n<3)
-	{
-		cout << "0\n";
-		return 0;
-	}
+    int a[n + 1];
+    for(i = 1; i <= n; i++)
+        sf(a[i]), sum += a[i];
 
-	s /= 3;
+    if(sum % 3 != 0 || n < 3)
+    {
+        pf(0);
+        return 0;
+    }
 
-	for (i = 1; i < n; i++)
-		a[i] += a[i - 1];
+    ll ans = 0;
 
-	ll ans = 0, cnt = 0;
-	for (i = 0; i < n - 1; i++)
-	{
+    bool capable[n + 1];
+    memset(capable, 0, sizeof(capable));
 
-		if (a[i] == s * 2)
-			ans += cnt;
+    tmp = 0;
+    for(i = 1; i < n; i++)
+    {
+        tmp += a[i];
 
-		if (a[i] == s)
-			cnt++;
-	}
+        //check if we can put the 2nd partition after this element
+        if(i > 1 && tmp == (sum / 3) * 2)
+            capable[i] = true;
+    }
 
-	cout << ans;
+    ll s[n + 1];
+    memset(s, 0, sizeof(s));
 
-	return 0;
+    for(i = n - 1; i > 0; i--)
+    {
+        s[i] += s[i + 1];
+        //finding out how many points are there to put the 2nd partition
+        if(capable[i])
+            s[i - 1]++;
+    }
+
+    tmp = 0;
+    for(i = 1; i < n; i++)
+    {
+        tmp += a[i];
+
+        if(tmp == sum / 3)
+            ans += s[i];
+    }
+
+    pfl(ans);
+
+    return 0;
 }
