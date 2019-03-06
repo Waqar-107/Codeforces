@@ -41,7 +41,7 @@ int main()
 
     int cnt[n][m];
     char s[n][m];
-    char vis[n][m];
+    bool vis[n][m];
 
     memset(cnt, 0, sizeof(cnt));
 
@@ -55,7 +55,7 @@ int main()
     {
         for(j = 0; j < m; j++)
         {
-            vis[i][j] = '0';
+            vis[i][j] = 0;
             if(s[i][j] == 'X'){
                 ans++;
                 continue;
@@ -71,7 +71,7 @@ int main()
             }
 
             if(cnt[i][j] >= 2)
-                pq.push({i, j}), vis[i][j] = '1';
+                pq.push({i, j}), vis[i][j] = 1;
         }
     }
 
@@ -87,11 +87,11 @@ int main()
                 x = dx[k] + u.first;
                 y = dy[k] + u.second;
 
-                if(x >= 0 && y >= 0 && x < n && y < m && s[x][y] == '.' && vis[x][y] == '0')
+                if(x >= 0 && y >= 0 && x < n && y < m && s[x][y] == '.' && !vis[x][y])
                 {
                     cnt[x][y]++;
                     if(cnt[x][y] >= 2)
-                        pq.push({x, y}), vis[x][y] = '1';
+                        pq.push({x, y}), vis[x][y] = 1;
                 }
             }
         }
