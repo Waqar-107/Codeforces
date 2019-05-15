@@ -1,2 +1,2 @@
 # Accepted problems of codeforces
-# handle : _lucifer_
+# handle : \_lucifer\_
