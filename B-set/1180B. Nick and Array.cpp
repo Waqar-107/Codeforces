@@ -46,7 +46,7 @@ int main()
             a[i].first = -a[i].first - 1;
     }
 
-    sort(a, a + n, greater<pp>());
+    sort(a, a + n);
 
     //all are negative now
     if(n % 2)
