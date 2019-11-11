@@ -26,17 +26,16 @@ typedef unsigned long long int ull;
 
 using namespace std;
 
-bool patternMatch(string text, string pattern)
+string s, t;
+bool patternMatch(string text, int len)
 {
     int i = 0, j = 0;
-    int n = text.length(), m = pattern.length();
+    int n = text.length();
 
     while(i < n)
     {
-        if(text[i] != pattern[j]) return false;
-        i++, j++;
-
-        j = j % m;
+        if(text[i] != s[i % len]) return false;
+        i++;
     }
 
     return true;
@@ -48,7 +47,7 @@ int main()
 
     int i, j, k;
     int n, m, q;
-    string s, t, mn, temp;
+    int ans = 0;
 
     cin >> s >> t;
 
@@ -56,30 +55,24 @@ int main()
         swap(s, t);
 
     n = s.length();
-
-    vector<int> div;
     for(i = 1; i * i <= n; i++)
     {
         if(n % i == 0)
         {
-            div.pb(i);
-            if(n / i != i)
-                div.pb(n / i);
-        }
-    }
-
-    int ans = 0;
-    for(int e : div)
-    {
-        temp = "";
-        for(i = 0; i < e; i++) temp.pb(s[i]);
-        if(patternMatch(s, temp))
-        {
-            if(t.length() % e == 0)
+            if(t.length() % i == 0)
             {
-                // cout<<t<<" "<<temp;nl;
-                if(patternMatch(t, temp))
+                if(patternMatch(s, i) && patternMatch(t, i))
                     ans++;
+            }
+
+            if(n / i != i)
+            {
+                k = n / i;
+                 if(t.length() % k == 0)
+                {
+                    if(patternMatch(s, k) && patternMatch(t, k))
+                        ans++;
+                }
             }
         }
     }
