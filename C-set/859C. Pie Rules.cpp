@@ -29,20 +29,6 @@ using namespace std;
 int dp[N][2];
 int a[N], n, sum;
 
-int solve(int pos, int d)
-{
-    if(pos > n) return 0;
-    if(dp[pos][d] != -1) return dp[pos][d];
-
-    if(d)
-        dp[pos][d] = max(a[pos] + solve(pos + 1, !d), solve(pos + 1, d));
-
-    else
-        dp[pos][d] = min(a[pos] + solve(pos + 1, d), solve(pos + 1, !d));
-
-    return dp[pos][d];
-}
-
 int main()
 {
     freopen("in.txt", "r", stdin);
@@ -57,9 +43,17 @@ int main()
     for(i = 0; i < N; i++)
         dp[i][0] = dp[i][1] = -1;
 
-    int ans = max(solve(1, 0), solve(1, 1));
+    // in the last round whoever has the decider will definitely have the slice
+    dp[n][1] = a[n];
+    dp[n][0] = 0;
 
-    cout << (sum - ans) << " " << ans << endl;
+    for(i = n - 1; i > 0; i--)
+    {
+        dp[i][1] = max(a[i] + dp[i + 1][0], dp[i + 1][1]);
+        dp[i][0] = min(a[i] + dp[i + 1][0], dp[i + 1][1]);
+    }
+
+    cout << dp[1][0] << " " << dp[1][1] << endl;
 
     return 0;
 }
