@@ -26,15 +26,6 @@ typedef unsigned long long int ull;
 
 using namespace std;
 
-bool ok(string s, char ch)
-{
-    int cnt = 0;
-    for(char c : s)
-        cnt += (c == ch);
-
-    return cnt == s.length();
-}
-
 int main()
 {
     freopen("in.txt", "r", stdin);
