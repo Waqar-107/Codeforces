@@ -17,6 +17,12 @@ assuming x is a class where it has two int attributes: id, marks
 data.sort(key = lambda x: (x.id, x.marks))
 ```
 
+<h3><u>declaring 2D array of N * M size in python:</u></h3>
+
+```python
+board = [['X' for i in range(M)] for j in range(N)]
+```
+
 <h3><u>policy based data structures:</u></h3>
 
 ```cpp
