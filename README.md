@@ -31,6 +31,12 @@ for i in range(n):
   arr.append([])
 ```
 
+<h3><u>priority queue with custom comparator</u></h3>
+
+```c++
+std::priority_queue<pair<int, int>, vector<pair<int, int>>, comparator> pq;
+```
+
 <h3><u>policy based data structures:</u></h3>
 
 ```cpp
