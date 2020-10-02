@@ -26,73 +26,74 @@ using namespace std;
 
 int main()
 {
-    freopen("in.txt", "r", stdin);
+	freopen("in.txt", "r", stdin);
 
-    int i,j,k;
-    int n,m;
-    string s;
+	int i, j, k;
+	int n, m;
+	string s;
 
-    vector<string> v1;
-    vector<string> v2;
+	vector<string> v1;
+	vector<string> v2;
 
-    cin>>n;
-    string a[n];
+	cin >> n;
+	string a[n];
 
-    for(i=0;i<n;i++)
-        cin>>a[i];
+	for(i = 0; i < n; i++)
+		cin >> a[i];
 
-    for(i=0;i<n;i++)
-    {
-        cin>>s;
+	for(i = 0; i < n; i++)
+	{
+		cin >> s;
 
         //s not in a
-        k=0;
-        for(j=0;j<n;j++)
-        {
-            if(s==a[j]){
-                a[j]="#";k=1;
-                break;
-            }
-        }
+		k = 0;
+		for(j = 0; j < n; j++)
+		{
+			if(s == a[j])
+			{
+				a[j] = "#"; k = 1;
+				break;
+			}
+		}
 
-        if(!k)
-            v2.pb(s);
-    }
+		if(!k)
+			v2.pb(s);
+	}
 
-    for(i=0;i<n;i++)
-    {
-        if(a[i]!="#")
-            v1.pb(a[i]);
-    }
+	for(i = 0; i < n; i++)
+	{
+		if(a[i] != "#")
+			v1.pb(a[i]);
+	}
 
-    n=v1.size();
-    m=0;
+	n = v1.size();
+	m = 0;
 
-    int x,y;
-    for(i=0;i<n;i++)
-    {
+	int x, y;
+	for(i = 0; i < n; i++)
+	{
         //change v1 to v2
-        y=inf;
-        for(j=0;j<n;j++)
-        {
+		y = inf;
+		for(j = 0; j < n; j++)
+		{
             //cout<<v2[j]<<" "<<v1[i]<<endl;
-            if(v2[j].length()==v1[i].length())
-            {
-                x=0;
-                for(k=0;k<v2[j].length();k++)
-                {
-                    if(v2[j][k]!=v1[i][k])
-                        x++;
-                }
+			if(v2[j].length() == v1[i].length())
+			{
+				x = 0;
+				for(k = 0; k < v2[j].length(); k++)
+				{
+					if(v2[j][k] != v1[i][k])
+						x++;
+				}
 
-                y=min(y,x);
-            }
-        }
+				y = min(y, x);
+			}
+		}
 
-        m+=y;
-    }
+		m += y;
+	}
 
-    cout<<m;
+	cout << m;
 
-    return 0;
+	return 0;
 }
