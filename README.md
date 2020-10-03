@@ -1,6 +1,12 @@
 # Accepted problems of codeforces
 # handle : \_lucifer\_
 
+
+# In case you want to contribute:
+1. if the solution already exists then it will not be merged.
+2. follow the naming convention. e.g: 107D. name of the problem.cpp
+
+
 # things i often forget while coding:
 
 <h3><u>sorting in python3 using lambda: </u></h3>
