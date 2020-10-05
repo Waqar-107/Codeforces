@@ -1,0 +1,13 @@
+    #include<bits/stdc++.h>
+    using namespace std;
+     
+    int main() {
+    	int n,m;
+    	string s;
+    	cin>>n>>m>>s;
+    	std::vector<int> a(m,0);
+    	for(int i=0;i<s.size();i++){
+    	    a[s[i]-'A']++;
+    	   
+    	} cout<<*min_element(a.begin(),a.end())*m;
+    }
