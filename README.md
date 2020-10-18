@@ -40,6 +40,16 @@ for i in range(n):
 <h3><u>priority queue with custom comparator</u></h3>
 
 ```c++
+class comparator
+{
+public:
+    // Type is variable type or any user defined object 
+    bool operator() (Type a, Type b)
+    {
+        // return according to your need
+    }
+};
+
 std::priority_queue<pair<int, int>, vector<pair<int, int>>, comparator> pq;
 ```
 
