@@ -79,3 +79,13 @@ int main(){
   cout << s.order_of_key(6) << endl;  // this will output 2 as there are two numbers in the set that are less than 6
 }
 ```
+
+<h3>custom comparator in c#</h3>
+```
+// this goes inside the class
+public int CompareTo(Node other)
+{
+    if (this.c == other.c) return this.value.CompareTo(other.value);
+    return this.c.CompareTo(other.c);
+}
+```
