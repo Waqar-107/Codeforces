@@ -81,7 +81,8 @@ int main(){
 ```
 
 <h3>custom comparator in c#</h3>
-```
+
+```csharp
 // this goes inside the class
 public int CompareTo(Node other)
 {
