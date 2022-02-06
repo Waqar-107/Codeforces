@@ -53,7 +53,7 @@ int main()
     for(i=0;i<n;i++)
     {
         k=a[i]&m;
-        if((k==a[i] && mp[k]>1) || (k!=a[i] && mp[k]))
+        if(((k!=a[i] && mp[k]==1))
         {
             pfs("1");
             return 0;
