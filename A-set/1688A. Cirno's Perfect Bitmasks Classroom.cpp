@@ -30,7 +30,6 @@
                     break;
                 }
             }
-            
             cout << ans << '\n';
         
         }
