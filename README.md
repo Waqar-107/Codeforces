@@ -1,6 +1,8 @@
-# Accepted problems of codeforces
-# handle : \_lucifer\_
+## Accepted problems of codeforces
+## handle : \_lucifer\_
 
+
+## Trying to maintain this repo for the Hacktoberfest 2022!!
 **Check out the [Contribution Guidelines](https://github.com/Waqar-107/Codeforces/blob/master/CONTRIBUTING.md) in case you want to contribute.**
 
 # things i often forget while coding:
