@@ -1,6 +1,7 @@
 # Accepted problems of codeforces
 # handle : \_lucifer\_
 
+**Check out the [Contribution Guidelines](https://github.com/Waqar-107/Codeforces/blob/master/CONTRIBUTING.md) in case you want to contribute.**
 
 # things i often forget while coding:
 
