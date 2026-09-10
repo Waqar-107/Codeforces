@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main() {
+    ll t;
+    cin>>t;
+    while(t--){
+        ll n;
+        cin>>n;
+        vector<ll> v(n);
+        for (ll i=0; i<n; i++) {
+            cin>>v[i];
+        }
+        //gcd(x,y) cant exceed |x-y| as gcd(x,y)=gcd(y,y-x) (from Euclidean algorithm)
+        // and if we can add a number d to both x and y we can make gcd(x,y) reach at most |x-y|
+        // thus max pleasure comes out to be max(v)-min(v) (i.e. largest difference)
+        //and as it is given that all numbers are positive and distinct out answer is always > 0
+        cout<<*max_element(v.begin(), v.end())-(*min_element(v.begin(),v.end()))<<endl;
+    }
+}
